@@ -1,11 +1,11 @@
 import type { NextPage } from 'next'
 import styled from 'styled-components'
-
+import TopBar from '../components/topBar'
 
 const Home: NextPage = () => {
   return (
     <Container>
-      
+      <TopBar/>
     </Container>
   )
 }

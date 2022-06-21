@@ -24,6 +24,9 @@ const Container = styled.div`
   display:flex;
   align-items: center;
   justify-content: center;
+  position: fixed;
+  top:0px;
+  width:100vw;
   div{
     position: absolute;
     display:flex;

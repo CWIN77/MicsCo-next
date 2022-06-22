@@ -5,11 +5,15 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next dev",
+    "simul": "next start",
+    "hosting": "npm run build && npm run export && firebase deploy --only hosting",
+    "export": "next export",
     "lint": "next lint"
   },
   "dependencies": {
     "babel-plugin-styled-components": "^2.0.7",
+    "firebase": "^8.6.5",
     "next": "12.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",

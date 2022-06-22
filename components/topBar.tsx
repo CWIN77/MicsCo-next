@@ -3,27 +3,36 @@ import SVG_search from "../public/svgs/search.svg"
 import SVG_menu from "../public/svgs/menu.svg"
 import SVG_profile from "../public/svgs/profile.svg"
 
+import { loginGoogle } from '../firebase/auth'
+
 const TopBar = () => {
   const svgProps = {width:20,height:20,fill:"#1A1A1A",style:{padding:4,marginLeft:12}}
   return (
-    <Container>
-      <div style={{left:10}}>
-        <SVG_profile style={{padding:4}}/>
-      </div>
-      <Title>MicsCo</Title>
-      <div style={{right:10}}>
-        <SVG_search {...svgProps} />
-        <SVG_menu {...svgProps} />
-      </div>
-    </Container>
+    <div>
+      <div style={{width:"100%",height:52.16}}></div>
+      <Bar>
+        <div onClick={()=>{loginGoogle()}} style={{left:10}}>
+          <SVG_profile style={{padding:4}}/>
+        </div>
+        <Title>MicsCo</Title>
+        <div style={{right:10}}>
+          <SVG_search {...svgProps} />
+          <SVG_menu {...svgProps} />
+        </div>
+      </Bar>
+    </div>
   )
 }
 
-const Container = styled.div`
+
+const Bar = styled.div`
   background-color: white;
   display:flex;
   align-items: center;
   justify-content: center;
+  position: fixed;
+  top:0px;
+  width:100vw;
   div{
     position: absolute;
     display:flex;

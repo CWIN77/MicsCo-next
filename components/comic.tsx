@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import SVG_star_full from "../public/svgs/star_full.svg"
 import SVG_star_half from "../public/svgs/star_half.svg"
@@ -9,10 +9,15 @@ import SVG_tag from "../public/svgs/tag.svg"
 const Comic = () => {
   const starIcon = {width:15,height:15,style:{padding:1.2}}
   const InformIcon = {width:16,height:16,fill:"#1A1A1A",style:{opacity:0.6,padding:2,marginRight:4}}
+  const [titleWidth,setTitleWidth] = useState<number | undefined>(undefined)
+  useEffect(()=>{
+    setTitleWidth(document.getElementById(ComicInform.styledComponentId)?.clientWidth);
+    console.log(document.getElementById(ComicInform.styledComponentId)?.clientWidth)
+  },[])
   return (
     <Container>
       <ComicImg src="https://manatoki142.net/data/file/comic/62a2f888e3a67_8DXqy5HM_d8b16836d3f7ca722e18dfc82b91222596c208da.jpg" />
-      <ComicInform>
+      <ComicInform id={ComicInform.styledComponentId}>
         <div>
           <Grade>
             <div style={{display:"flex"}}>
@@ -25,10 +30,8 @@ const Comic = () => {
             </div>
             <Publish>연재중</Publish>
           </Grade>
-          <Title>루리 드래곤</Title>
-          <Explane>
-            작품에 대한 설명을 적어 넣을 부분ㅇㅇㅇ Sssdsdsasda
-          </Explane>
+          <Title width={String(titleWidth)}>루리 드래곤</Title>
+          <Explane>작품에 대한 설명을 적어 넣을 부분ㅇㅇㅇ Sssdsdsasda</Explane>
         </div>
         <div>
           <InformWrapper>
@@ -56,21 +59,26 @@ const ComicInform = styled.div`
   display:flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 4px 0.9rem;
+  padding: 1px 0.8rem;
   padding-right:4px;
 `
 const ComicImg = styled.img`
   border-radius: 6px;
-  width:calc(((100vw - 1.5rem) * 0.4) + 1px);   // 1px 여유 공간
-  height:calc((100vw - 1.5rem) * 0.4 / 7 * 10); // 7:10 비율
+  width:calc(((100vw - 1.5rem) * 0.37) + 1px);   // 1px 여유 공간
+  height:calc((100vw - 1.5rem) * 0.37 / 7 * 10); // 7:10 비율
 `
-const Title = styled.h1`
-  font-size: 18px;
-  margin-top: 6px;
-  margin-bottom: 2px;
+const Title = styled.h1<{width:string}>`
+  font-size: 18.5px;
+  margin-top: 8px;
+  margin-bottom: 3px;
+  height: 26.67px;
+  width: calc(${({width})=>width === "undefined" ? "0" : width}px - 1rem);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 `
 const Explane = styled.h2`
-  font-size: 12px;
+  font-size: 12.5px;
   opacity: 0.6;
 `
 const Grade = styled.div`

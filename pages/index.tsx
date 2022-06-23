@@ -38,7 +38,7 @@ const Container = styled.div`
   font-weight: 600;
 `
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   return {
     props:{
       title:"CWIN APP12"

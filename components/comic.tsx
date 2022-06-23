@@ -5,7 +5,7 @@ import SVG_star_half from "../public/svgs/star_half.svg"
 import SVG_star_void from "../public/svgs/star_void.svg"
 import SVG_people from "../public/svgs/people.svg"
 import SVG_tag from "../public/svgs/tag.svg"
-
+// test
 const Comic = () => {
   const starIcon = {width:15,height:15,style:{padding:1.2}}
   // const InformIcon = {width:16,height:16,fill:"#1A1A1A",style:{opacity:0.6,padding:2,marginRight:4}}
